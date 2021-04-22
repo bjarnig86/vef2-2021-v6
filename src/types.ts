@@ -21,7 +21,7 @@ export interface IFilm {
   title: string;
   episodeID: number;
   openingCrawl: string;
-  characterConnection?: {
+  characterConnection: {
     characters: Array<ICharacter>;
   };
 }
