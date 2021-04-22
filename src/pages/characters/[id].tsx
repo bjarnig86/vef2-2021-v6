@@ -34,12 +34,16 @@ export default function PageComponent(
   );
 }
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async ({
+  params,
+}) => {
   const id = params?.id as string | undefined;
 
   const query = `
     query($id: ID!) {
-      # TODO sækja person
+      person(id: $id) {
+        ...character
+      }
     }
     ${characterFragment}
   `;
@@ -48,9 +52,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params
 
   if (id) {
     // TODO EKKI any
-    const result = await fetchSwapi<any>(query, { id });
+    const result = await fetchSwapi<ICharacter>(query, { id });
 
-    person = result.person ?? null;
+    person = result?.person ?? null;
   }
 
   return {

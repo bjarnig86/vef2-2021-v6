@@ -1,4 +1,11 @@
-
 .person {
+  margin-top: 2rem;
 
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  &__link {
+    margin-top: 1rem;
+  }
 }

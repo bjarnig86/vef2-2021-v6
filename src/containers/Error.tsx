@@ -9,7 +9,10 @@ type Props = {
   status?: number;
 };
 
-export const ErrorPage = ({ message = '', status = 404 }: Props): JSX.Element => {
+export const ErrorPage = ({
+  message = '',
+  status = 404,
+}: Props): JSX.Element => {
   if (process.browser || process.env.NODE_ENV === 'development') {
     console.info(message);
     return <DefaultErrorPage statusCode={status} />;
